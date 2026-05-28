@@ -1,0 +1,31 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install required packages
+  apt:
+    name:
+      - docker.io
+      - docker-compose-v2
+    state: present
+
+- name: Enable Docker
+  service:
+    name: docker
+    enabled: yes
+    state: started
+
+- name: Create application directory
+  file:
+    path: /opt/studentapp
+    state: directory
+
+- name: Copy application files
+  copy:
+    src: ../../../studentapp/
+    dest: /opt/studentapp/
+
+- name: Start containers
+  command:
+    cmd: docker compose up -d
+    chdir: /opt/studentapp

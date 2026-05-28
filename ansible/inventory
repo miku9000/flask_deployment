@@ -1,0 +1,11 @@
+[web]
+192.168.10.40
+[db]
+192.168.10.41
+[monitor]
+192.168.10.42
+[all:vars]
+ansible_connection='ssh'
+ansible_ssh_port='22'
+ansible_user='ubuntu'
+ansible_ssh_private_key_file=~/.ssh/id_ed25519

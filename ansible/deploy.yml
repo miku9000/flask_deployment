@@ -1,0 +1,14 @@
+- hosts: web
+  become: true
+  roles:
+    - web
+
+- hosts: db
+  become: true
+  roles:
+    - db
+
+- hosts: monitor
+  become: true
+  roles:
+    - monitor

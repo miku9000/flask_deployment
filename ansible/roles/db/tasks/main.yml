@@ -1,0 +1,23 @@
+- name: Install PostgreSQL
+  apt:
+    name:
+      - postgresql
+      - postgresql-contrib
+    state: present
+
+- name: Ensure PostgreSQL is running
+  service:
+    name: postgresql
+    state: started
+    enabled: yes
+
+- name: Install UFW
+  apt:
+    name: ufw
+    state: present
+
+- name: Allow PostgreSQL
+  ufw:
+    rule: allow
+    port: '5432'
+    proto: tcp
